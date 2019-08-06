@@ -7,29 +7,18 @@ const BookForm = () => {
 
     const [bookInput, setBookInput] = useState({ title: '', author: '' })
 
-    // const title = (e) => {
-    //     setBookInput({ ...bookInput, title: e.target.value })
-    // }
-
-    // const author = (e) => {
-    //     setBookInput({ ...bookInput, author: e.target.value })
-    // }
-    console.log('bookInput', bookInput);
-
+    const handleSubmit = e => {
+        e.preventDefault()
+        addBook(bookInput);
+        setBookInput({ title: '', author: '' })
+    }
 
     return (
         <div >
-            <form onSubmit={e => {
-                e.preventDefault()
-                addBook(bookInput, e);
-                setBookInput({ title: '', author: '' })
-            }} >
+            <form onSubmit={handleSubmit}>
 
-                {/* <input type="text" value={bookInput.title} onChange={title} />
-                <input type="text" value={bookInput.author} onChange={author} /> */}
-
-                    <input type="text" value={bookInput.title} onChange={(e) => setBookInput({...bookInput, title: e.target.value})} />
-                    <input type="text" value={bookInput.author} onChange={(e) => setBookInput({...bookInput, author: e.target.value})} />
+                <input type="text" value={bookInput.title} onChange={(e) => setBookInput({ ...bookInput, title: e.target.value })} />
+                <input type="text" value={bookInput.author} onChange={(e) => setBookInput({ ...bookInput, author: e.target.value })} />
 
                 <button disabled={!bookInput.author} type="submit"> SUBMIT </button>
 

@@ -12,9 +12,7 @@ const BookContextProvider = (props) => {
         { title: 'book 4 test', author: 'mele meiseil', id: 4 },
     ])
 
-    const addBook = (bookInput, e) => {
-        console.log("BOOKINPUT", bookInput)
-        // setBooks ( ...books, {title : bookInput.title, author: bookInput.author, id: uuid()})
+    const addBook = (bookInput) => {
         setBooks([...books, {...bookInput, id: uuid()}])
     }
 
