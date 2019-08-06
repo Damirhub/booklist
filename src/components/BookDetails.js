@@ -7,7 +7,7 @@ const BookDetails = ({ book }) => {
     return (
         // books.map( book =>
             <li onClick = {() => removeBook(book.id)}>
-                id: {book.id}
+                <div> id: {book.id} </div>
                 <div className = "title"> Title: {book.title}</div>
                 <div className = "author"> Author: {book.author}</div>
                 <hr/>
