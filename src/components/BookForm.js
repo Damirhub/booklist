@@ -5,18 +5,14 @@ import { BookContext } from '../contexts/BookContext';
 const BookForm = () => {
     const { addBook } = useContext(BookContext)
 
-    const [bookInput, setBookInput] = useState({ title: 'joh', author: 'doe', id: uuid() })
-
-    const changeId = () => {
-        setBookInput({ ...bookInput, id: uuid() })
-    }
+    const [bookInput, setBookInput] = useState({ title: '', author: '' })
 
     const title = (e) => {
-        setBookInput({ title: e.target.value, author: bookInput.author, id: bookInput.id })
+        setBookInput({ ...bookInput, title: e.target.value })
     }
 
     const author = (e) => {
-        setBookInput({ title: bookInput.title, author: e.target.value, id: bookInput.id })
+        setBookInput({ ...bookInput, author: e.target.value })
     }
     console.log('bookInput', bookInput);
 
@@ -25,14 +21,13 @@ const BookForm = () => {
         <div >
             <form onSubmit={e => {
                 addBook(bookInput, e);
-                changeId();
-                setBookInput({ title: '', author: '', id: uuid() })
+                setBookInput({ title: '', author: '' })
             }} >
 
                 <input type="text" value={bookInput.title} onChange={title} />
                 <input type="text" value={bookInput.author} onChange={author} />
-                <button disabled={!bookInput.author} type="submit"> SUBMIT </button>
 
+                <button disabled={!bookInput.author} type="submit"> SUBMIT </button>
 
             </form>
         </div>

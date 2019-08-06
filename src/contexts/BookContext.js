@@ -16,7 +16,7 @@ const BookContextProvider = (props) => {
         console.log("BOOKINPUT", bookInput)
         e.preventDefault()
         // setBooks ( ...books, {title : bookInput.title, author: bookInput.author, id: uuid()})
-        setBooks([...books, bookInput])
+        setBooks([...books, {...bookInput, id: uuid()}])
     }
 
     const removeBook = (receivedId) => {
