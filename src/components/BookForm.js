@@ -1,29 +1,31 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, useContext, useRef } from 'react'
+import uuid from 'uuid/v1'
 import { BookContext } from '../contexts/BookContext';
 
 const BookForm = () => {
-
     const { addBook } = useContext(BookContext)
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
 
+    const [bookInput, setBookInput] = useState({ title: '', author: '' })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
-        addBook(title, author)
-        setTitle('')
-        setAuthor('')
+        addBook(bookInput);
+        setBookInput({ title: '', author: '' })
     }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="book title" value={title}
-                onChange={(e) => setTitle(e.target.value)} required />
+        <div >
+            <form onSubmit={handleSubmit}>
 
-            <input type="text" placeholder="book author" value={author}
-                onChange={(e) => setAuthor(e.target.value)} required />
+                <input type="text" placeholder="Book Title" value={bookInput.title} 
+                    onChange={(e) => setBookInput({ ...bookInput, title: e.target.value })} />
+                <input type="text" placeholder="Book Author" value={bookInput.author}
+                    onChange={(e) => setBookInput({ ...bookInput, author: e.target.value })} />
 
-            <input type="submit" value="Add Book" />
-        </form>
+                {/* <button disabled={!bookInput.author} type="submit"> SUBMIT </button> */}
+                <input disabled={!bookInput.author} type="submit"/>
+            </form>
+        </div>
     )
 }
 
