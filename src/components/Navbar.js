@@ -3,11 +3,11 @@ import { BookContext } from '../contexts/BookContext';
 
 const Navbar = () => {
 
-const { books } = useContext(BookContext)
+const { booksER } = useContext(BookContext)
     return (
         <div className = "navbar">
             <h1>Ninja reading list</h1>
-            <p> Currently you have {books.length} book get through ...</p>
+            <p> Currently you have {booksER.length} book get through ...</p>
         </div>
     )
 }
